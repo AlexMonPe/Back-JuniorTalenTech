@@ -73,11 +73,6 @@ describe('create candidate', ()=>{
       name: "alex",
       email: "alex@alex.com",
       password: "alex"
-    },
-    {
-      name: "pablo",
-      email: "alex@alex.com",
-      password: "pablo"
     });
     
     expect(res.statusCode).toEqual(400);
