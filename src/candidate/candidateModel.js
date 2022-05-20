@@ -28,4 +28,5 @@ const Schema = new mongoose.Schema({
   abilities: [{type: String, required: true}],
   languages: [String]
 });
-module.exports.Candidate = mongoose.model("Candidate", Schema);
+const Candidates = mongoose.model("Candidate", Schema);
+module.exports = Candidates;
