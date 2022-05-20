@@ -1,7 +1,9 @@
 const mongoose = require('mongoose');
+const Users = require('../users/userModel.js');
 
 // Schema: Candidate
 const Schema = new mongoose.Schema({
+  // idUser: { type: mongoose.Schema.Types.ObjectId, ref: "Users", required: true },
   name: {type: String, required: true},
   surname: {type: String, required: true},
   born_date: {type: String, required: true},
