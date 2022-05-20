@@ -1,9 +1,11 @@
 const mongoose = require('mongoose');
 
-module.exports.connection = async () =>{
+const connection = async () =>{
     try{
-        await mongoose.connect('mongodb://localhost:27017/mytests')
+        await mongoose.connect('mongodb://localhost:27017/juniortalentech')
     }catch(error){
-        console.log(error)
+        console.log(error, 'Error connecting to DB')
     }
 }
+
+module.exports = connection;

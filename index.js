@@ -1,8 +1,11 @@
 const express = require("express");
+const connection = require("./DB/connection.js")
 
 const app = express();
 
 app.use(express.json());
+
+connection().then(()=> console.log('Database is up')).catch('Error connecting DB');
 
 app.get('/api/echo', (req,res) => res.json({echo: 'test get works'}))
 
