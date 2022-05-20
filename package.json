@@ -1,12 +1,29 @@
 {
-  "dependencies": {
-    "express": "^4.18.1",
-    "mongoose": "^6.3.3"
+  "name": "backend-juniortalentech",
+  "version": "1.0.0",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
   },
   "scripts": {
     "dev": "nodemon index.js",
     "test-watch": "jest --watchAll",
     "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AlexMonPe/Back-JuniorTalenTech.git"
+  },
+  "author": "Alex",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AlexMonPe/Back-JuniorTalenTech/issues"
+  },
+  "homepage": "https://github.com/AlexMonPe/Back-JuniorTalenTech#readme",
+  "description": "",
+  "dependencies": {
+    "express": "^4.18.1",
+    "mongoose": "^6.3.3"
   },
   "devDependencies": {
     "jest": "^28.1.0",
