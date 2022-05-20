@@ -31,9 +31,6 @@ describe('create candidate', ()=>{
     expect(res.statusCode).toEqual(200);
     expect(res.body._id).anything();
   })
-})
-
-describe('create candidate', ()=>{
   test("register candidate with wrong email", async ()=>{
     const res = await app.post('/candidate/')
     .send({
