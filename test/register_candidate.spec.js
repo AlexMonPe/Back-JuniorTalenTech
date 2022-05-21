@@ -54,7 +54,7 @@ describe('create candidate', ()=>{
       languages: ["ingles", "aleman"]
     });
     expect(200);
-    expect(res._body._id).toEqual(expect.anything());
+    expect(res.body._id).toEqual(expect.anything());
   })
 
   test("register candidate with wrong email", async ()=>{
@@ -102,7 +102,7 @@ describe('create candidate', ()=>{
     });
     expect(res.body.email).toBeUndefined();
     expect(400);
-    expect(res.body.error).toBe('Error in email, can\'t be empty');
+    expect(res.body.error).toBe("Error in email or password, can't be empty");
   });
 
   test("register candidate with empty password", async ()=>{
@@ -114,7 +114,7 @@ describe('create candidate', ()=>{
     });
     expect(res.body.password).toBeUndefined();
     expect(res.statusCode).toEqual(400);
-    expect(res.body.error).toBe('Error in password, can\'t be empty');
+    expect(res.body.error).toBe("Error in email or password, can't be empty");
   });
 
   test("register candidate with email duplicated", async ()=>{
