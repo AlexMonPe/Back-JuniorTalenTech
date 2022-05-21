@@ -1,5 +1,6 @@
 const Users = require("../users/userModel.js");
 const Candidates = require("./candidateModel.js");
+const isEmail = require("validator/lib/isEmail.js");
 
 const createCandidate = async (req, res) => {
   try {
@@ -13,14 +14,15 @@ const createCandidate = async (req, res) => {
     const isEmailDuplicated = await Users.findOne({ email: req.body.email });
 
     if (!isEmailDuplicated) {
-      await Users.create(userToCreate);
+      if (!req.body.email || !req.body.password) {
+        res.status(400).json({ error: "Error in email or password, can't be empty" });
+      } else if (isEmail(req.body.email)) {
+        await Users.create(userToCreate);
 
-      const candidateCreated = await Candidates.create(req.body);
-
-      if (req.body.password == "") {
-        res.status(400).json({ error: "Error in password, can't be empty" });
-      } else {
+        const candidateCreated = await Candidates.create(req.body);
         res.status(200).json(candidateCreated);
+      } else {
+        res.status(400).json({ error: "Error in email syntax, need @" });
       }
     } else {
       res.status(400).json({ error: "Email already exists" });
