@@ -54,7 +54,7 @@ describe('create candidate', ()=>{
       languages: ["ingles", "aleman"]
     });
     expect(200);
-    expect(res.body._id).toEqual(expect.anything());
+    expect(res.body.user._id).toEqual(expect.anything());
   })
 
   test("register candidate with wrong email", async ()=>{
