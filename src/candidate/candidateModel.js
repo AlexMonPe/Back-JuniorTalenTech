@@ -7,7 +7,7 @@ const Schema = new mongoose.Schema({
   name: {type: String, required: true},
   surname: {type: String, required: true},
   born_date: {type: String, required: true},
-  phone_number: {type: Number, required: true, unique: true},
+  phone_number: {type: Number, required: true},
   city: {type: String, required: true},
   title: String,
   training: [
@@ -28,7 +28,10 @@ const Schema = new mongoose.Schema({
       finish_year: {type: Number, required: true},
   }],
   abilities: [{type: String, required: true}],
-  languages: [String]
+  languages: [{
+    language_name: String,
+    language_level: String
+  }]
 });
 const Candidates = mongoose.model("Candidates", Schema);
 module.exports = Candidates;
