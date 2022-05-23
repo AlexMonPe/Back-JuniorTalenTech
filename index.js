@@ -1,10 +1,12 @@
 const express = require('express');
 const connection = require('./DB/connection.js')
 const routerCandidates = require('./src/candidate/candidateRoute.js')
+const cors = require('cors')
 
 const app = express();
 
 app.use(express.json());
+app.use(cors());
 
 connection().then(()=> console.log('Database is up')).catch('Error connecting DB');
 
