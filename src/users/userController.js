@@ -1,6 +1,6 @@
 const jwt = require("jsonwebtoken");
 const { compareHash } = require("../services/bcrypt.js");
-const Users = require("./userModel.js");
+const {Users} = require("./userModel.js");
 const env = require("dotenv");
 
 env.config();
@@ -11,10 +11,7 @@ const login = async (req, res, next) => {
       email: req.body.email,
     });
 
-    if (!userFound) 
-    return res.status(400).json({ error: "User not found" });
-
-    if (!await compareHash(req.body.password, userFound.password)) 
+    if (!userFound || !await compareHash(req.body.password, userFound.password)) 
     return res.status(400).json({ error: "User not found" });
 
     const token = jwt.sign(
