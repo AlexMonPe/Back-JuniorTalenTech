@@ -10,4 +10,12 @@ const hasher = async (password) => {
     }
 }
 
-module.exports = {hasher}
+const compareHash = async (password, pwdhashed) => {
+    try{
+      return await bcrypt.compare(password, pwdhashed)
+      }catch(error){
+        console.log('Password needed', error)
+      }
+    }
+
+module.exports = {hasher, compareHash}
