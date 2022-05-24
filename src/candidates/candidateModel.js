@@ -32,5 +32,5 @@ const Schema = new mongoose.Schema({
     language_level: String
   }]
 });
-const Candidates = mongoose.model("Candidates", Schema);
-module.exports = Candidates;
+
+module.exports.Candidates = mongoose.model("Candidates", Schema);
