@@ -1,5 +1,5 @@
 const Users = require("../users/userModel.js");
-const Candidates = require("../candidate/candidateModel.js");
+const Candidates = require("../candidates/candidateModel.js");
 const isEmail = require("validator/lib/isEmail.js");
 
 const validateCreateCandidate = async (userToCreate, req, res) =>{
