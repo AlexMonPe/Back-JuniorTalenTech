@@ -23,7 +23,6 @@ const Schema = new mongoose.Schema({
       company_name: {type: String, required: true},
       work_name: {type: String, required: true},
       functions: {type: String, text: true, required: true},
-      technologies: String,
       start_year: {type: Number, required: true},
       finish_year: {type: Number, required: true},
   }],
