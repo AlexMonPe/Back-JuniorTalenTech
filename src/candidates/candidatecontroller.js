@@ -1,4 +1,4 @@
-const { validateCreateCandidate } = require("../services/validatorCreateCandidate.js")
+const { validateCreateCandidate } = require("./validatorCreateCandidate.js")
 const {hasher} = require("../services/bcrypt.js")
 
 const createCandidate = async (req, res) => {
