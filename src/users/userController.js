@@ -11,22 +11,22 @@ const login = async (req, res, next) => {
       email: req.body.email,
     });
 
-    if (userFound) {
-      if (await compareHash(req.body.password, userFound.password)) {
-        const token = jwt.sign(
-          { email: req.body.email, id: userFound._id, role: userFound.role },
-          process.env.SECRET_KEY
+    if (!userFound) 
+    return res.status(400).json({ error: "User not found" });
+
+    if (!await compareHash(req.body.password, userFound.password)) 
+    return res.status(400).json({ error: "User not found" });
+
+    const token = jwt.sign(
+        { email: req.body.email, id: userFound._id, role: userFound.role },
+        process.env.SECRET_KEY
         );
-        res.json({ token: token, id: userFound._id, role: userFound.role });
-      } else {
-        res.status(404).send({ error: "Password is wrong" });
-      }
-    } else {
-      res.status(400).json({ error: "User not found" });
-    }
+
+   res.status(200).json({ token: token, id: userFound._id, role: userFound.role });
+
   } catch (error) {
     console.log(error);
-    res.status(401).send(error);
+    res.status(401).send(error, 'Error in login');
   }
 };
 
