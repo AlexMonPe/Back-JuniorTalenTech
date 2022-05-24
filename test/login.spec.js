@@ -49,7 +49,7 @@ describe("login ", () => {
       password: "",
     });
     expect(res.body.password).toBeUndefined();
-    expect(res.statusCode).toEqual(404);
-    expect(res.body.error).toBe("Password is wrong");
+    expect(res.statusCode).toEqual(400);
+    expect(res.body.error).toBe("User not found");
   });
 });
