@@ -22,12 +22,12 @@ describe("test to fetch api", () => {
 
 describe('create candidate', ()=>{
   test("register candidate success", async ()=>{
-    const res = await app.post('/candidates')
+    const res = await app.post('/candidates/')
     .send({
       name: "alex",
       surname: "montero",
       email: "alex@alex.com",
-      password: "alex",
+      password: "123456",
       born_date: "09/06/1990",
       phone_number: 687328331,
       city: "Madrid",
@@ -45,13 +45,15 @@ describe('create candidate', ()=>{
           company_name: "geekshubs",
           work_name: "programador",
           functions: "programar apps desde 0 utilizando metodologia agile scrum, vsc de IDE",
-          technologies: "React, node, php",
           start_year: 2015,
           finish_year: 2018
         }
       ],
       abilities: ["scrum", "php", "react"],
-      languages: ["ingles", "aleman"]
+      languages: [{
+        language_name: "ingles",
+        language_level: "basico"
+    }],
     });
     expect(200);
     expect(res.body.user._id).toEqual(expect.anything());
@@ -81,7 +83,6 @@ describe('create candidate', ()=>{
           company_name: "geekshubs",
           work_name: "programador",
           functions: "programar apps desde 0 utilizando metodologia agile scrum, vsc de IDE",
-          technologies: "React, node, php",
           start_year: 2015,
           finish_year: 2018
         }
