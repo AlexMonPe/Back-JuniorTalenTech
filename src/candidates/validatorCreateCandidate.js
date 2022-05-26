@@ -4,12 +4,12 @@ const isEmail = require("validator/lib/isEmail.js");
 
 const validateCreateCandidate = async (userToCreate, req, res) => {
   try {
-    const isEmailDuplicated = await Users.findOne({ email: req.body.email });
+    const isEmailDuplicated = await Users.findOne({ email: req.body.form.email });
 
-    if (!req.body.email || !req.body.password)
+    if (!req.body.form.email || !req.body.form.password)
       return res.status(400).json({ error: "Error in email or password, can't be empty" });
 
-    if (!isEmail(req.body.email))
+    if (!isEmail(req.body.form.email))
       return res.status(400).json({ error: "Error in email syntax, need @" });
 
     if (isEmailDuplicated)
