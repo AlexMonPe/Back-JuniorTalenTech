@@ -23,12 +23,19 @@ const createCompany = async (req, res) => {
       return res.status(400).json({ error: "Email not valid" });
 
     if (!req.body.name)
-      return res.status(400).json({ error: "Error company name, can't be empty" });
+      return res
+        .status(400)
+        .json({ error: "Error company name, can't be empty" });
 
     if (isEmailDuplicated)
       return res.status(400).json({ error: "Email already exists" });
-    const companyCreated = await Companies.create(req.body);
+
     const userCreated = await Users.create(userToCreate);
+
+    if (!userCreated)
+      return res.status(400).json({ error: "Error creating user" });
+
+    const companyCreated = await Companies.create(req.body);
 
     res.status(200).json({
       company: companyCreated,
