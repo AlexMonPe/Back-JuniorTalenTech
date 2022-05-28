@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 
-const { createCandidate } = require("./candidatecontroller");
+const { createCandidate } = require("./candidateController");
 
 
 //Create candidate.
