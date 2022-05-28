@@ -15,6 +15,8 @@ app.get('/api/echo', (req,res) => res.json({echo: 'test get works'}));
 
 app.use('/candidates', routerCandidates);
 app.use('/users', routerUsers);
+app.use('/companies', routerCompanies);
+
 
 app.set("port", process.env.PORT || 1515)
 
