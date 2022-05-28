@@ -2,6 +2,7 @@ const express = require('express');
 const connection = require('./DB/connection.js')
 const routerCandidates = require('./src/candidates/candidateRoute.js')
 const routerUsers = require('./src/users/userRoute.js')
+const routerCompanies = require('./src/companies/companyRoute.js')
 const cors = require('cors')
 
 const app = express();
