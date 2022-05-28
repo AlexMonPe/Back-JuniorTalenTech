@@ -23,7 +23,7 @@ describe("create company", () => {
       password: "geekshubs",
     });
     expect(200);
-    expect(res.email).toMatch(emailPattern);
+    expect(res.body.user.email).toMatch(emailPattern);
     expect(res.body.user._id).toEqual(expect.anything());
   });
 
@@ -86,7 +86,7 @@ describe("create company", () => {
       website: "www.geekshubs.com",
       phone_number: 919871235,
       employees: "500-1000 empleados",
-      email: "",
+      email: "geekshubs@geeksgubs.com",
       password: "geekshubs",
     });
     expect(res.body.name).toBeUndefined();
