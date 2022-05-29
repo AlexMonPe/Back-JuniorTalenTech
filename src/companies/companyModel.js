@@ -9,7 +9,7 @@ const Schema = new mongoose.Schema({
   description: String,
   ubication: { type: String, required: true },
   website: String,
-  cif: String,
+  cif: { type: String, required: true },
   phone_number: { type: Number, required: true },
   employees: String,
 });
