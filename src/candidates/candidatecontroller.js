@@ -6,7 +6,6 @@ const isEmail = require("validator/lib/isEmail.js");
 const createCandidate = async (req, res) => {
   try {
     const userToCreate = {
-      name: req.body.form.name,
       email: req.body.form.email,
       password: await hasher(req.body.form.password),
       role: "candidate",
