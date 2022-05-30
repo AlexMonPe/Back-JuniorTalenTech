@@ -29,7 +29,7 @@ describe("login ", () => {
       password: "123456",
     });
     expect(400);
-    expect(res.body.error).toBe("User not found");
+    expect(res.body.error).toBe("Usuario o contraseña incorrecta");
   });
 
   test("login with empty email", async () => {
@@ -39,7 +39,7 @@ describe("login ", () => {
     });
     expect(res.body.email).toBeUndefined();
     expect(404);
-    expect(res.body.error).toBe("User not found");
+    expect(res.body.error).toBe("Usuario o contraseña incorrecta");
   });
 
   test("login with empty password", async () => {
@@ -50,6 +50,6 @@ describe("login ", () => {
     });
     expect(res.body.password).toBeUndefined();
     expect(res.statusCode).toEqual(400);
-    expect(res.body.error).toBe("User not found");
+    expect(res.body.error).toBe("Usuario o contraseña incorrecta");
   });
 });
