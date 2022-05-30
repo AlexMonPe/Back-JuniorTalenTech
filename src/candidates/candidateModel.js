@@ -3,7 +3,7 @@ const Users = require("../users/userModel.js");
 
 // Schema: Candidate
 const Schema = new mongoose.Schema({
-  // idUser: { type: mongoose.Schema.Types.ObjectId, ref: "Users", required: true },
+  idUser: { type: mongoose.Schema.Types.ObjectId, ref: "Users", required: true },
   form: {
     name: { type: String, required: true },
     surname: { type: String, required: true },
