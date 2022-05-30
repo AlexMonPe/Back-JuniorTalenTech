@@ -12,12 +12,8 @@ const login = async (req, res, next) => {
     let userFound = await Users.findOne({
       email: req.body.email,
     });
-
-    if (
-      !userFound ||
-      !(await compareHash(req.body.password, userFound.password))
-    )
-      return res.status(400).json({ error: "User not found" });
+    if (!userFound || !(await compareHash(req.body.password, userFound.password)))
+      return res.status(400).json({ error: "Usuario o contraseña incorrecta" });
 
     const token = jwt.sign(
       { email: req.body.email, id: userFound._id, role: userFound.role },
