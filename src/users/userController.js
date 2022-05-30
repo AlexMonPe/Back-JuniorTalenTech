@@ -27,4 +27,12 @@ const login = async (req, res, next) => {
   }
 };
 
-module.exports = { login };
+const updateUser = (req,res) => {
+  try {
+    await Users.updateOne({_id: req.params.id}, req.body);
+  } catch (error) {
+    res.status(400).json(error);
+  }
+}
+
+module.exports = { login, updateUser };
