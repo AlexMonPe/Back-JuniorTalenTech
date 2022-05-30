@@ -31,7 +31,7 @@ const createCandidate = async (req, res) => {
     if (!userCreated)
       return res.status(400).json({ error: "Error creating user" });
 
-    const candidateCreated = await Candidates.create(req.body);
+    const candidateCreated = await Candidates.create({...req.body, idUser: userCreated.id });
 
     res.status(200).json({
       candidate: candidateCreated,
@@ -60,4 +60,14 @@ const updateCandidate = async (req, res) => {
   }
 };
 
-module.exports = { createCandidate, updateCandidate };
+const getCandidateByUserId = async (req, res) => {
+  try {
+    const candidateFound = await Candidates.find({ idUser: req.params.id }).populate('idUser');
+    console.log(candidateFound, 'candidatefound')
+    res.status(200).json(candidateFound)
+  } catch (error) {
+    res.json({ error: "Error getting candidate" });
+  }
+};
+
+module.exports = { createCandidate, updateCandidate, getCandidateByUserId };
