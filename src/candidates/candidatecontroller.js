@@ -42,9 +42,9 @@ const createCandidate = async (req, res) => {
   }
 };
 
-const updateCandidate = () => {
+const updateCandidate = async (req,res) => {
   try {
-    
+    await Candidates.updateOne({_id: req.params.id}, req.body);
   } catch (error) {
     res.status(400).json(error);
   }
