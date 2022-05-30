@@ -6,6 +6,6 @@ const { createCandidate, updateCandidate } = require("./candidateController.js")
 
 //Create candidate.
 router.post('/', createCandidate);
-router.post('/', updateCandidate)
+router.patch('/:id', updateCandidate)
 
 module.exports = router;
