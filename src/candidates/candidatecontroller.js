@@ -52,7 +52,7 @@ const updateCandidate = async (req, res) => {
     const idFound = await Candidates.findById({ _id: req.params.id });
     if (!idFound)
       return res.status(400).json({ error: "Usuario no encontrado" });
-
+    console.log(req.body)
     await Candidates.updateOne({ _id: req.params.id }, req.body);
     res.status(200).json("Se han guardado los cambios");
   } catch (error) {
@@ -63,7 +63,6 @@ const updateCandidate = async (req, res) => {
 const getCandidateByUserId = async (req, res) => {
   try {
     const candidateFound = await Candidates.find({ idUser: req.params.id }).populate('idUser');
-    console.log(candidateFound, 'candidatefound')
     res.status(200).json(candidateFound)
   } catch (error) {
     res.json({ error: "Error getting candidate" });
