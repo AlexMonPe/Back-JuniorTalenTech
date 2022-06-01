@@ -9,7 +9,7 @@ afterAll(() => mongoose.disconnect());
 
 describe("update company", () => {
   test("update company success", async () => {
-    const res = await app.patch("/companies/6294b5813d8b7b21e4bc19e4").send({
+    const res = await app.patch("/companies/6297b9f9faf23caa3beb757c").send({
       name: "Kontesa",
       title: "Formación y seleccion IT",
       description: "Descripción empresa",
