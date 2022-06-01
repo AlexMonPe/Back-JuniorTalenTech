@@ -27,18 +27,18 @@ describe("update company", () => {
 
   test("update company with wrong id", async () => {
     const res = await app.patch("/companies/99").send({
-        name: "Kontesa",
-        title: "Formación y seleccion IT",
-        description: "Descripción empresa",
-        ubication: "Madrid",
-        website: "www.kontesafilms.com",
-        phone_number: 919871235,
-        cif: "B687896487",
-        employees: "500-1000 empleados",
-        email: "geekshubs@geekshubs.com",
-        password: "geekshubs",
-      });
+      name: "Kontesa",
+      title: "Formación y seleccion IT",
+      description: "Descripción empresa",
+      ubication: "Madrid",
+      website: "www.kontesafilms.com",
+      phone_number: 919871235,
+      cif: "B687896487",
+      employees: "500-1000 empleados",
+      email: "geekshubs@geekshubs.com",
+      password: "geekshubs",
+    });
     expect(400);
-    expect(res.body.error).toBe("Empresa no encontrado");
+    expect(res.body.error).toBe("Empresa no encontrada");
   });
 });
