@@ -34,7 +34,7 @@ const createCompany = async (req, res) => {
     if (!userCreated)
       return res.status(400).json({ error: "Error creating user" });
 
-    const companyCreated = await Companies.create(req.body);
+    const companyCreated = await Companies.create({...req.body, idUser: userCreated.id});
 
     res.status(200).json({
       company: companyCreated,
@@ -45,4 +45,14 @@ const createCompany = async (req, res) => {
   }
 };
 
-module.exports = { createCompany };
+
+const getCompanyByUserId = async (req, res) => {
+  try {
+    const companyFound = await Companies.find({ idUser: req.params.id }).populate('idUser');
+    res.status(200).json(companyFound)
+  } catch (error) {
+    res.json({ error: "Error getting company" });
+  }
+};
+
+module.exports = { createCompany, getCompanyByUserId };
