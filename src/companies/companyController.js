@@ -55,4 +55,22 @@ const getCompanyByUserId = async (req, res) => {
   }
 };
 
-module.exports = { createCompany, getCompanyByUserId };
+const updateCompany = async (req, res) => {
+  try {
+    const validateIsObjectId = req.params.id.match(/^[0-9a-fA-F]{24}$/);
+
+    if (!validateIsObjectId) {
+      return res.status(400).json({ error: "Empresa no encontrada" });
+    }
+    const idFound = await Companies.findById({ _id: req.params.id });
+    if (!idFound)
+      return res.status(400).json({ error: "Empresa no encontrada" });
+    
+    await Companies.updateOne({ _id: req.params.id }, req.body);
+    res.status(200).json("Se han guardado los cambios");
+  } catch (error) {
+    res.status(400).json(error);
+  }
+};
+
+module.exports = { createCompany, getCompanyByUserId, updateCompany };
