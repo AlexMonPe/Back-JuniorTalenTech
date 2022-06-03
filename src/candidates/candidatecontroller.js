@@ -52,7 +52,6 @@ const updateCandidate = async (req, res) => {
     const idFound = await Candidates.findById({ _id: req.params.id });
     if (!idFound)
       return res.status(400).json({ error: "Usuario no encontrado" });
-    console.log(req.body)
     await Candidates.updateOne({ _id: req.params.id }, req.body);
     res.status(200).json("Se han guardado los cambios");
   } catch (error) {
