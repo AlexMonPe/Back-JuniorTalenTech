@@ -68,4 +68,24 @@ const getCandidateByUserId = async (req, res) => {
   }
 };
 
-module.exports = { createCandidate, updateCandidate, getCandidateByUserId };
+const getCandidateById = async (req,res) => {
+  try {
+    const candidateFound = await Candidates.find({ _id: req.params.id })
+    res.status(200).json(candidateFound)
+  } catch (error) {
+    res.json({ error: "Error getting candidate" });
+  } 
+}
+
+const getAllCandidates = async (req,res) => {
+  try {
+    const candidates = await Candidates.find({})
+    
+    res.status(200).json(candidates)
+  } catch (error) {
+    console.log(error, 'error getting all candidates')
+  }
+
+}
+
+module.exports = { createCandidate, updateCandidate, getCandidateByUserId, getAllCandidates, getCandidateById };
