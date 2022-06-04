@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 
-const { createCandidate, updateCandidate, getCandidateByUserId, getAllCandidates, getCandidateById } = require("./candidateController.js");
+const { createCandidate, updateCandidate, getCandidateByUserId, getAllCandidates, getCandidateById } = require("./candidateControl.js");
 
 
 //Create candidate.
